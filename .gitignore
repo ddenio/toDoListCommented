@@ -1,0 +1,4 @@
+# adding our node modules and .env file to our git ignore, we dont want anyone seeing our .env connection string , so we hide it
+
+node_modules
+.env
