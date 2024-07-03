@@ -20,8 +20,11 @@
 <body>
     <h1>Todo List: </h1>
     <ul class="todoItems">
+        <!-- our collection of todos that we named 'items' in our server.js file gets iterated through here! -->
     <% for(let i=0; i < items.length; i++) {%>
         <li class="item">
+            <!-- if item (todo item) has the completed property of 'true', we give it the class of 'completed', which in our CSS file gives the todo item a 
+             gray color and puts a line through it -->
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].thing %></span>
             <% }else{ %>

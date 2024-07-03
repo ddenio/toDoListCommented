@@ -42,6 +42,7 @@ app.get('/',async (request, response)=>{
     const itemsLeft = await db.collection('todos').countDocuments({completed: false})
     //once we grab all of our items from our database, we render them on our client side, added all todos, by plugging in
     // all collected information into our index.ejs template, and spitting(rendering) out HTML, and respond with this HTML, making it visible to the user
+    //here we also named the collection of all our todo tasks 'items', as seen below
     response.render('index.ejs', { items: todoItems, left: itemsLeft })
 
     //the code below is the old way to do what we have done above
@@ -59,7 +60,7 @@ app.get('/',async (request, response)=>{
 //API, set up to hear POST request from Client-side index.ejs form submit
 app.post('/addTodo', (request, response) => {
     //grabbing form value from our index.ejs (using 'request.body.todoItem') when from is submitted
-    //once grabbed, we are adding it to our MongoDB database collection here!
+    //once grabbed, we are adding the todo to our MongoDB database collection here!
     db.collection('todos').insertOne({thing: request.body.todoItem, completed: false})
     .then(result => {
         //after our item is grabbed from our html form, and we have added item to our database,
