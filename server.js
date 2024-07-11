@@ -59,13 +59,18 @@ app.get('/',async (request, response)=>{
 
 //API, set up to hear POST request from Client-side index.ejs form submit
 app.post('/addTodo', (request, response) => {
-    //grabbing form value from our index.ejs (using 'request.body.todoItem') when from is submitted
+    //The 'action' value from our client-side form on our EJS file sets up our post route ('/addTodo')
+    //grabbing form value from our index.ejs (client-side) (using 'request.body.todoItem') when from is submitted. ('todoItem' is what we named our name property
+    // input on the EJS file)
     //once grabbed, we are adding the todo to our MongoDB database collection here!
+    // We also set up here what properties our 'todo' or document we are sending to the database collection will have; e.g., each todo will have a
+    // 'thing' property, and a 'completed' property
     db.collection('todos').insertOne({thing: request.body.todoItem, completed: false})
     .then(result => {
         //after our item is grabbed from our html form, and we have added item to our database,
         //we then RESPOND with: console.log('todo added), and refresh the page (which updates everything), which in turn sends a GET request (which we have setup above (app.get))
         console.log('Todo Added')
+        //This triggers a redirect, which sends a GET request! Goes to database and finding all items, etc in our GET request above
         response.redirect('/')
     })
     .catch(error => console.error(error))
