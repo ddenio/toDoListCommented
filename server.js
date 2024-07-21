@@ -78,6 +78,7 @@ app.post('/addTodo', (request, response) => {
 
 //our PUT (update) HTTP request.
 app.put('/markComplete', (request, response) => {
+    console.log('Mark Complete request received:', request.body);
     db.collection('todos').updateOne({thing: request.body.itemFromJS},{
         $set: {
             completed: true
@@ -95,6 +96,7 @@ app.put('/markComplete', (request, response) => {
 })
 
 app.put('/markUnComplete', (request, response) => {
+    console.log('Mark Uncomplete request received:', request.body);
     db.collection('todos').updateOne({thing: request.body.itemFromJS},{
         $set: {
             completed: false
@@ -112,6 +114,7 @@ app.put('/markUnComplete', (request, response) => {
 })
 
 app.delete('/deleteItem', (request, response) => {
+    console.log('Delete request received:', request.body);
     db.collection('todos').deleteOne({thing: request.body.itemFromJS})
     .then(result => {
         console.log('Todo Deleted')

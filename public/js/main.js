@@ -19,7 +19,8 @@ Array.from(itemCompleted).forEach((element)=>{
 
 //creating async function to delete a task using 'delete' CRUD operation
 async function deleteItem(){
-    const itemText = this.parentNode.childNodes[1].innerText
+    const itemText = this.parentNode.querySelector('span').innerText
+    console.log('Deleting item:', itemText);
     try{
         const response = await fetch('deleteItem', {
             method: 'delete',
@@ -39,7 +40,8 @@ async function deleteItem(){
 
 //creating async function to update task as completed using 'update'/put CRUD operation on task text
 async function markComplete(){
-    const itemText = this.parentNode.childNodes[1].innerText
+    const itemText = this.parentNode.querySelector('span').innerText
+    console.log('Marking complete:', itemText);
     try{
         const response = await fetch('markComplete', {
             method: 'put',
@@ -59,7 +61,8 @@ async function markComplete(){
 
 //creating async function to update task as uncompleted using 'update'/put CRUD operation on task text
 async function markUnComplete(){
-    const itemText = this.parentNode.childNodes[1].innerText
+    const itemText = this.parentNode.querySelector('span').innerText
+    console.log('Marking uncomplete:', itemText);
     try{
         const response = await fetch('markUnComplete', {
             method: 'put',
