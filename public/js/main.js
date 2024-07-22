@@ -4,7 +4,7 @@ const deleteBtn = document.querySelectorAll('.fa-trash')
 const item = document.querySelectorAll('.item span')
 const itemCompleted = document.querySelectorAll('.item span.completed')
 
-//Grabbing each icon, adding event listeners to them to delete, markcomplete, and markuncomplete
+//Grabbing each icon, adding event listeners to them to call our delete, markcomplete, and markuncomplete functions
 Array.from(deleteBtn).forEach((element)=>{
     element.addEventListener('click', deleteItem)
 })
