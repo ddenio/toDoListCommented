@@ -39,6 +39,7 @@ async function deleteItem(){
 }
 
 //creating async function to update task as completed using 'update'/put CRUD operation on task text
+//Here we are sending a PUT request to our server (to our '/markComplete' route/PUT request in server.js) with the request body of the specific task text
 async function markComplete(){
     const itemText = this.parentNode.querySelector('span').innerText
     console.log('Marking complete:', itemText);
