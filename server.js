@@ -78,7 +78,7 @@ app.post('/addTodo', (request, response) => {
 
 //our PUT (update) HTTP request.
 // our client-side markComplete PUT request sends a request here with a specific task text in the body it sends
-//our server then finds our 'todos' collection in our database, and updates the specific task that we sent from the client-side, and sets the 'completed' 
+//our server then finds our 'todos' collection in our database, and updates the specific document/task that we sent from the client-side, and sets the 'completed' 
 //property to 'true', then sends a response back to our client side, which then sends one last reload, or GET request to update the client-side page
 app.put('/markComplete', (request, response) => {
     console.log('Mark Complete request received:', request.body);

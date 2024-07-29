@@ -41,6 +41,8 @@ async function deleteItem(){
 //creating async function to update task as completed using 'update'/put CRUD operation on task text
 //Here we are sending a PUT request to our server (to our '/markComplete' route/PUT request in server.js) with the request body of the specific task text
 async function markComplete(){
+    //old school way:
+    //const itemText = this.parentNode.childNodes[1].innerText
     const itemText = this.parentNode.querySelector('span').innerText
     console.log('Marking complete:', itemText);
     try{
@@ -51,7 +53,11 @@ async function markComplete(){
                 'itemFromJS': itemText
             })
           })
+        //once our server.js 'markComplete' PUT method finds the task/document and makes the property change, it sents a json() response back here
         const data = await response.json()
+        //Once the responce from the server.js file is sent back here, we console log our data, and then do a page reload;  WHICH TRIGGERS A GET REQUEST.
+        //The GET request goes to the database sees that the task has been changed, 
+        //and renders this change on our EJS to the client side for the user
         console.log(data)
         location.reload()
 
